@@ -33,6 +33,7 @@
   ```
 
 * rabbitMQ接收端
+
   ```java
   /**
    * rabbitMQ接收端
@@ -45,11 +46,13 @@
           System.out.println(message);
       }
   }
-```
+  ```
 
 ### 方法二`接收端与发送端进行绑定(只向指定的接受方发送消息)`
 
+
 * rabbitMQ发送端
+
   ```java
   @Controller
   public class TestClient {
@@ -76,6 +79,7 @@
   ```
 
 * rabbitMQ接收端
+
   ```java
   /**
    * rabbitMQ接收端
