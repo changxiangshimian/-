@@ -122,7 +122,7 @@
       MessageChannel myMessage();
 
   }
-```
+  ```
 
 * 发送消息
 
@@ -169,22 +169,22 @@
 
 * 在项目配置文件中配置消息规则
 
-```yml
-spring:
-  cloud:
-    stream:
-      bindings:
-        #消息分组,防止模块部署多个,消息往每个模块都发送消息,只需往一个模块下发送消息就可以
-        #消息名为 myMessage
-        myMessage:
-          #分组的名称没有特定取名要求
-          group: msg
-          #发生消息堆积在rabbitMQ控制页面以json的参数展示
-          content-type: application/json
-        #消息名为 resultMessage
-        resultMessage:
-          #分组的名称没有特定取名要求
-          group: msg
-          #发生消息堆积在rabbitMQ控制页面以json的参数展示
-          content-type: application/json
-```
+    ```yml
+    spring:
+      cloud:
+        stream:
+          bindings:
+            #消息分组,防止模块部署多个,消息往每个模块都发送消息,只需往一个模块下发送消息就可以
+            #消息名为 myMessage
+            myMessage:
+              #分组的名称没有特定取名要求
+              group: msg
+              #发生消息堆积在rabbitMQ控制页面以json的参数展示
+              content-type: application/json
+            #消息名为 resultMessage
+            resultMessage:
+              #分组的名称没有特定取名要求
+              group: msg
+              #发生消息堆积在rabbitMQ控制页面以json的参数展示
+              content-type: application/json
+    ```
