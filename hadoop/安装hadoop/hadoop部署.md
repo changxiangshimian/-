@@ -1,4 +1,4 @@
-# hadoop的安装
+# hadoop的部署
 
 > 软件配置简览
 
@@ -51,23 +51,17 @@
   * 在`<configuration>`节点内加入配置:
 
     ```xml
+
     <property>
+      <name>hadoop.tmp.dir</name>
+      <value>/home/yetao_yang/hadoop/tmp</value>
+      <description>Abase for other temporary directories.</description>
+    </property>
 
-          <name>hadoop.tmp.dir</name>
-
-          <value>/home/yetao_yang/hadoop/tmp</value>
-
-          <description>Abase for other temporary directories.</description>
-
-     </property>
-
-     <property>
-
-          <name>fs.default.name</name>
-
-          <value>hdfs://hadoop01:9000</value>
-
-     </property>
+    <property>
+      <name>fs.default.name</name>
+      <value>hdfs://hadoop01:9000</value>
+    </property>
 
     ```
 
@@ -83,43 +77,30 @@
   * 在`<configuration>`节点内加入配置:
 
     ```xml
+
     <property>
-
-       <name>dfs.name.dir</name>
-
-       <value>/home/yetao_yang/hadoop/dfs/name</value>
-
-       <description>Path on the local filesystem where theNameNode stores the namespace and transactions logs persistently.</description>
-
+      <name>dfs.name.dir</name>
+      <value>/home/yetao_yang/hadoop/dfs/name</value>
+      <description>Path on the local filesystem where theNameNode stores the namespace and transactions logs persistently.</description>
     </property>
 
     <property>
-
-       <name>dfs.data.dir</name>
-
-       <value>/home/yetao_yang/hadoop/dfs/data</value>
-
-       <description>Comma separated list of paths on the localfilesystem of a DataNode where it should store its blocks.</description>
-
+      <name>dfs.data.dir</name>
+      <value>/home/yetao_yang/hadoop/dfs/data</value>
+      <description>Comma separated list of paths on the localfilesystem of a DataNode where it should store its blocks.</description>
     </property>
 
     <property>
-
-       <name>dfs.replication</name>
-
-       <value>2</value>
-
+      <name>dfs.replication</name>
+      <value>2</value>
     </property>
 
     <property>
-
-          <name>dfs.permissions</name>
-
-          <value>false</value>
-
-          <description>need not permissions</description>
-
+      <name>dfs.permissions</name>
+      <value>false</value>
+      <description>need not permissions</description>
     </property>
+
     ```
 
 * 把`mapred-site.xml.template`文件复制为`mapred-site.xml`
@@ -127,6 +108,7 @@
   * 在`<configuration>`节点加入配置
 
     ```xml
+
     <property>
        <name>mapred.job.tracker</name>
        <value>hadoop01:49001</value>
@@ -141,20 +123,24 @@
        <name>mapreduce.framework.name</name>
        <value>yarn</value>
     </property>
+
     ```
 
 * 修改`slaves`文件
   * 把里面的localhost删除掉并添加两个hadoop从节点的主机名
 
     ```shell
+
     hadoop02
     hadoop03
+
     ```
 
 * 修改`yarn-site.xml`文件
   * 在`<configuration>`节点加入配置
 
     ```xml
+
     <property>
       <name>yarn.resourcemanager.hostname</name>
       <value>hadoop01</value>
@@ -220,6 +206,7 @@
       <name>yarn.nodemanager.vmem-check-enabled</name>
       <value>false</value>
     </property>
+
     ```
 
 * 把配置好的`/home/yetao_yang/hadoop`文件进行打包
@@ -247,6 +234,7 @@
       starting resourcemanager, logging to /home/yetao_yang/hadoop/binary/hadoop-2.9.2/logs/yarn-yetao_yang-resourcemanager-hadoop01.out
       hadoop02: starting nodemanager, logging to /home/yetao_yang/hadoop/binary/hadoop-2.9.2/logs/yarn-yetao_yang-nodemanager-hadoop02.out
       hadoop03: starting nodemanager, logging to /home/yetao_yang/hadoop/binary/hadoop-2.9.2/logs/yarn-yetao_yang-nodemanager-hadoop03.out
+      
       ```
 
 * `http://mastIP:50070`
