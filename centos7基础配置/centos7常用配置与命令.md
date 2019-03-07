@@ -7,7 +7,7 @@
 <hr>
 
 * 先让centos可以访问外网
-  * `cd /etc/sysconfig/network-scripts`
+  * `cd /etc/sysconfig/network-scripts` 
   * `vi ifcfg-eth0`
 * 修改ONBOOT为yes
   * `ONBOOT=yes`
