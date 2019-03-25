@@ -24,6 +24,29 @@
 
 <hr>
 
+* 配置ssh`有些centos的版本默认是没有安装sshd服务的`
+  * `yum list installed | grep openssh-server`检查一下是否安装了sshd
+  * 如果没有则进行安装
+    * `yum install openssh-server`
+  * 进入`/etc/ssh`目录,编辑sshd_config文件
+
+    ```shell
+    Port 22
+    ListenAddress 0.0.0.0
+    ListenAddress ::
+    PermitRootLogin yes
+    PasswordAuthentication yes
+    ```
+
+  * 开启ssh服务
+    * `service sshd start`
+  * 确认是否开启sshd服务
+    * `ps -e | grep sshd`
+  * 开机启动sshd服务
+    * `systemctl enable sshd`
+
+<hr>
+
 * hostname重命名
   * `hostnamectl set-hostname newhostname`
 
