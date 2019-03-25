@@ -1,4 +1,4 @@
-## 单节点
+# 单节点
 
 ### 从[官网](https://hadoop.apache.org/)下载对应版本的hadoop
 
@@ -374,4 +374,105 @@
 
     ![](./img/image07.gif)
 
-* 完全分布模式
+# 完全分布模式
+
+> 集群说明
+
+系统 | hostname | ip | hadoop版本 | java版本
+--|--|--|--|--
+CentOS Linux release 7.6.1810 (Core)|hadoop01|192.168.1.201|Hadoop 2.9.2|1.8.0_201
+CentOS Linux release 7.6.1810 (Core)|hadoop02|192.168.1.202|Hadoop 2.9.2|1.8.0_201
+CentOS Linux release 7.6.1810 (Core)|hadoop03|192.168.1.203|Hadoop 2.9.2|1.8.0_201
+
+> 集群规划
+
+|hadoop01|hadooop02|hadoop03
+---|---|---|---
+HDFS|NameNode</br></br>DataNode|DataNode|SecondaryNameNode</br></br>DataNode
+YARN|NodeManager|ResourceManager</br></br>NodeManager|NodeManager
+
+> **ps: 三台机器的java均已配置好环境变量,Hadoop也配置好环境变量**
+
+* 配置免密登录ssh
+  * 查看用户目录下是否有.ssh文件
+    ```shell
+    [yetao_yang@hadoop01 ~]$ ls -al
+    总用量 32
+    drwx------. 5 yetao_yang yetao_yang   139 3月  25 15:03 .
+    drwxr-xr-x. 3 root       root          24 3月  18 23:55 ..
+    -rw-------. 1 yetao_yang yetao_yang  5220 3月  25 06:36 .bash_history
+    -rw-r--r--. 1 yetao_yang yetao_yang    18 10月 31 01:07 .bash_logout
+    -rw-r--r--. 1 yetao_yang yetao_yang   193 10月 31 01:07 .bash_profile
+    -rw-r--r--. 1 yetao_yang yetao_yang   515 3月  23 15:31 .bashrc
+    -rw-r--r--. 1 yetao_yang yetao_yang 12288 3月  25 15:03 .bashrc.swp
+    drwxrwxr-x. 3 yetao_yang yetao_yang    53 3月  25 15:07 hadoop
+    drwxrwxr-x. 3 yetao_yang yetao_yang    60 3月  22 01:46 jdk
+    drwx------. 2 yetao_yang yetao_yang    25 3月  25 06:32 .ssh
+    ```
+
+  * 生成秘钥与公钥
+
+    ```shell
+    [yetao_yang@hadoop01 .ssh]$ ssh-keygen -t rsa
+    Generating public/private rsa key pair.
+    Enter file in which to save the key (/home/yetao_yang/.ssh/id_rsa):
+    Enter passphrase (empty for no passphrase):
+    Enter same passphrase again:
+    Your identification has been saved in /home/yetao_yang/.ssh/id_rsa.
+    Your public key has been saved in /home/yetao_yang/.ssh/id_rsa.pub.
+    The key fingerprint is:
+    SHA256:BuEoOqgGoL7c1O1r33O98T4iC8RNViAyxXH8FZfkFLU yetao_yang@hadoop01
+    The key's randomart image is:
+    +---[RSA 2048]----+
+    |      .oo+oo...=B|
+    |     o .o.o.. ooo|
+    |. . . o    o. .E |
+    |+. .   .. +  .   |
+    |*       So .     |
+    |+.  . ...        |
+    |.o . . . .    .. |
+    |o +   ..  oo o oo|
+    | o .  .oo. o= .o=|
+    +----[SHA256]-----+
+
+    ```
+
+  * 将sshID拷贝到另外三台(本机也要配置)机器上去
+
+    ```shell
+    [yetao_yang@hadoop01 .ssh]$ ssh-copy-id hadoop02
+    /usr/bin/ssh-copy-id: INFO: Source of key(s) to be installed: "/home/yetao_yang/.ssh/id_rsa.pub"
+    /usr/bin/ssh-copy-id: INFO: attempting to log in with the new key(s), to filter out any that are already installed
+    /usr/bin/ssh-copy-id: INFO: 1 key(s) remain to be installed -- if you are prompted now it is to install the new keys
+    yetao_yang@hadoop02's password:
+
+    Number of key(s) added: 1
+
+    Now try logging into the machine, with:   "ssh 'hadoop02'"
+    and check to make sure that only the key(s) you wanted were added.
+
+    [yetao_yang@hadoop01 .ssh]$ ssh-copy-id hadoop03
+    /usr/bin/ssh-copy-id: INFO: Source of key(s) to be installed: "/home/yetao_yang/.ssh/id_rsa.pub"
+    /usr/bin/ssh-copy-id: INFO: attempting to log in with the new key(s), to filter out any that are already installed
+    /usr/bin/ssh-copy-id: INFO: 1 key(s) remain to be installed -- if you are prompted now it is to install the new keys
+    yetao_yang@hadoop03's password:
+
+    Number of key(s) added: 1
+
+    Now try logging into the machine, with:   "ssh 'hadoop03'"
+    and check to make sure that only the key(s) you wanted were added.
+
+    [yetao_yang@hadoop01 .ssh]$ ssh-copy-id hadoop01
+    /usr/bin/ssh-copy-id: INFO: Source of key(s) to be installed: "/home/yetao_yang/.ssh/id_rsa.pub"
+    /usr/bin/ssh-copy-id: INFO: attempting to log in with the new key(s), to filter out any that are already installed
+    /usr/bin/ssh-copy-id: INFO: 1 key(s) remain to be installed -- if you are prompted now it is to install the new keys
+    yetao_yang@hadoop03's password:
+
+    Number of key(s) added: 1
+
+    Now try logging into the machine, with:   "ssh 'hadoop01'"
+    and check to make sure that only the key(s) you wanted were added.
+    ```
+
+  * 这是配置了201免密登录202和203,同理也要在202和203上进行相同的操作
+    * `至此免密登录配置完毕`
