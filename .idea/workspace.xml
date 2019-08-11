@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="655d3c28-cea8-45bf-ab7d-62e8ff558625" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-    </list>
+    <list default="true" id="655d3c28-cea8-45bf-ab7d-62e8ff558625" name="Default" comment="提交大数据知识点" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -15,6 +13,10 @@
   </component>
   <component name="CompilerWorkspaceConfiguration">
     <option name="MAKE_PROJECT_ON_SAVE" value="true" />
+  </component>
+  <component name="DefaultGradleProjectSettings">
+    <option name="testRunner" value="GRADLE" />
+    <option name="delegatedBuild" value="true" />
   </component>
   <component name="FileEditorManager">
     <leaf />
@@ -41,6 +43,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -51,19 +54,18 @@
             <path>
               <item name="LearnNotes" type="b2602c69:ProjectViewProjectNode" />
               <item name="LearnNotes" type="462c0819:PsiDirectoryNode" />
-              <item name="java知识点" type="462c0819:PsiDirectoryNode" />
+              <item name="大数据知识点记录" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="LearnNotes" type="b2602c69:ProjectViewProjectNode" />
               <item name="LearnNotes" type="462c0819:PsiDirectoryNode" />
-              <item name="java知识点" type="462c0819:PsiDirectoryNode" />
-              <item name="网络基础" type="462c0819:PsiDirectoryNode" />
+              <item name="大数据知识点记录" type="462c0819:PsiDirectoryNode" />
+              <item name="数据仓库" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
       <pane id="PackagesPane" />
     </panes>
   </component>
@@ -71,7 +73,7 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../spring-cloud2" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="project.structure.last.edited" value="Project" />
@@ -128,16 +130,25 @@
       <workItem from="1537932061454" duration="40000" />
       <workItem from="1558891905753" duration="55000" />
       <workItem from="1564508665559" duration="79000" />
+      <workItem from="1564720688158" duration="246000" />
     </task>
+    <task id="LOCAL-00001" summary="提交大数据知识点">
+      <created>1564720753562</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1564720753562</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="174000" />
+    <option name="totallyTimeSpent" value="420000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="2062" height="1126" extended-state="6" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.16716567" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.16866267" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -173,6 +184,10 @@
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="提交大数据知识点" />
+    <option name="LAST_COMMIT_MESSAGE" value="提交大数据知识点" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/java知识点/网络基础/网络基础.md">
